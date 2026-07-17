@@ -71,6 +71,11 @@ function showFloorText(id: number) {
         text = text.replace(/<thinking>[\s\S]*?<\/thinking>/gi, '');
         text = text.replace(/<UpdateVariable>[\s\S]*?<\/UpdateVariable>/gi, '');
         text = text.replace(/```status[\s\S]*?```/g, '');
+        // 提取 <maintext> 内容，去掉 <option>
+        const mainMatch = text.match(/<maintext>([\s\S]*?)<\/maintext>/i);
+        if (mainMatch) text = mainMatch[1];
+        text = text.replace(/<option>[\s\S]*?<\/option>/gi, '');
+        text = text.replace(/<\/?maintext>/gi, '');
         text = text.replace(/\n/g, '<br>');
         readonlyHtml.value = text.trim();
       }
