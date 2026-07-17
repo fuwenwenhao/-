@@ -29,12 +29,13 @@ onMounted(() => {
     ? getLastMessageId() : -1;
 
   if (currentId === 0) {
-    if (lastId > 0) {
-      // 已有后续消息，游戏已开始 → 显示0楼正文
+    // 判断是否已创建角色：有后续消息，或第0楼已有 stat_data
+    const hasCreated = lastId > 0 || hasStatData();
+    if (hasCreated) {
       showFloorText(0);
       return;
     }
-    // 新对话，尚无后续消息 → 显示开局页面
+    // 新对话，尚未创建 → 显示开局页面
     screen.value = 'title';
     if (typeof eventOn === 'function' && typeof tavern_events !== 'undefined') {
       eventOn(tavern_events.MESSAGE_RECEIVED, () => { showFloorText(0); });
@@ -45,6 +46,16 @@ onMounted(() => {
     if (!isLatest) showFloorText(currentId);
   }
 });
+
+function hasStatData(): boolean {
+  try {
+    if (typeof getChatMessages === 'function') {
+      const msgs = getChatMessages(0);
+      if (msgs.length && msgs[0].data?.stat_data) return true;
+    }
+  } catch {}
+  return false;
+}
 
 function showFloorText(id: number) {
   try {
