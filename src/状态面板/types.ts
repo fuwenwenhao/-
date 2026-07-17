@@ -29,6 +29,8 @@ export const BodySchema = z.object({
 // === 玩家状态 ===
 export const PlayerStatusSchema = z.object({
   name: z.string().default('未知'),
+  race: z.string().default(''),
+  profession: z.string().default(''),
   hp: z.object({ current: z.number().default(10), max: z.number().default(10) }).default({}),
   sanity: z.object({ current: z.number().default(10), max: z.number().default(10) }).default({}),
   physical_state: z.string().default('正常'),

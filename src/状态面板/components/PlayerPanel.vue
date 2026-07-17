@@ -9,6 +9,14 @@
           <span class="value name-value">{{ player.name }}</span>
         </div>
         <div class="info-item">
+          <span class="label">种族</span>
+          <span class="value">{{ player.race || '—' }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">职业</span>
+          <span class="value">{{ player.profession || '—' }}</span>
+        </div>
+        <div class="info-item">
           <span class="label">身份</span>
           <span class="value">{{ player.identity }}</span>
         </div>

@@ -12,6 +12,7 @@ export const OPENING_TEMPLATE = `<maintext>
 身份：{{身份}}
 实力：{{实力}}
 阵营：{{阵营}}
+地区：{{地区}}
 
 【六维】
 力量：{{力量}}  敏捷：{{敏捷}}  智力：{{智力}}
@@ -22,10 +23,7 @@ export const OPENING_TEMPLATE = `<maintext>
 
 【背景】
 {{背景故事}}
-</maintext>
-<option>
-1.开始我们的故事
-</option>`;
+</maintext>`;
 
 // 性别文字映射
 export function mapGender(g: string): string {

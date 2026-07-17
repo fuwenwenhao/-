@@ -185,6 +185,9 @@ export const useStatusStore = defineStore('status', () => {
 
     // 同步到 rawData（战斗系统 & 状态栏会用）
     rawData.value.attributes = { ...form.attributes };
+    rawData.value.player.name = form.name;
+    rawData.value.player.race = form.race;
+    rawData.value.player.profession = form.profession;
     rawData.value.player.money = money;
     rawData.value.player.current_date = form.era;
     rawData.value.player.current_region = form.region;
@@ -343,7 +346,9 @@ export const useStatusStore = defineStore('status', () => {
 
     return {
       player: {
-        name: 基本.性别 ? `${基本.种族 ?? ''}·${基本.职业 ?? ''}` : '',
+        name: 玩家.名字 ?? (基本.性别 ? `${基本.种族 ?? ''}·${基本.职业 ?? ''}` : ''),
+        race: 基本.种族 ?? 玩家.种族 ?? '',
+        profession: 基本.职业 ?? 玩家.职业 ?? '',
         hp: 状态.hp ?? { current: 10, max: 10 },
         sanity: 状态.sanity ?? { current: 10, max: 10 },
         physical_state: 状态.physical_state ?? 状态.物理状态 ?? '正常',
