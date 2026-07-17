@@ -29,9 +29,9 @@ onMounted(() => {
     ? getLastMessageId() : -1;
 
   if (currentId === 0) {
-    // 判断是否已创建角色：有后续消息，或第0楼已有 stat_data
-    const hasCreated = lastId > 0 || hasStatData();
-    if (hasCreated) {
+    // 判断是否已创建角色：有后续消息，或第0楼已有玩家创建数据
+    const created = lastId > 0 || hasCreated();
+    if (created) {
       showFloorText(0);
       return;
     }
@@ -47,11 +47,13 @@ onMounted(() => {
   }
 });
 
-function hasStatData(): boolean {
+function hasCreated(): boolean {
   try {
     if (typeof getChatMessages === 'function') {
       const msgs = getChatMessages(0);
-      if (msgs.length && msgs[0].data?.stat_data) return true;
+      const sd = msgs[0]?.data?.stat_data;
+      // 只有玩家完成创建后 stat_data.玩家.性别 才会被写入
+      if (sd?.玩家?.性别) return true;
     }
   } catch {}
   return false;
