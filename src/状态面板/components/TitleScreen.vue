@@ -52,9 +52,20 @@
         <span class="line"></span>
       </div>
 
+      <!-- 名字输入 -->
+      <div class="name-block">
+        <label class="name-label">你的名字</label>
+        <input
+          v-model="playerName"
+          class="name-input"
+          placeholder="请输入角色名..."
+          maxlength="20"
+        />
+      </div>
+
       <!-- 开始按钮 -->
       <div class="start-block">
-        <button class="start-btn" @click="handleStart" :disabled="starting">
+        <button class="start-btn" @click="handleStart" :disabled="starting || !playerName.trim()">
           <span class="btn-inner">
             <span class="btn-icon">▸</span>
             <span class="btn-text">{{ starting ? '正在启程...' : '开 始 游 戏' }}</span>
@@ -78,10 +89,11 @@
 import { ref } from 'vue';
 
 const emit = defineEmits<{
-  start: [];
+  start: [name: string];
 }>();
 
 const starting = ref(false);
+const playerName = ref('');
 const frameRef = ref<HTMLDivElement | null>(null);
 
 const titleChars = ['月', '计', '都', '市'];
@@ -107,10 +119,10 @@ function particleStyle(i: number) {
 }
 
 function handleStart() {
-  if (starting.value) return;
+  if (starting.value || !playerName.value.trim()) return;
   starting.value = true;
   setTimeout(() => {
-    emit('start');
+    emit('start', playerName.value.trim());
   }, 600);
 }
 </script>
@@ -324,10 +336,46 @@ function handleStart() {
   to { opacity: 0.9; letter-spacing: 8px; }
 }
 
+/* 名字输入 */
+.name-block {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  animation: fadeSlideUp 1s ease-out 1.5s backwards;
+}
+.name-label {
+  display: block;
+  font-size: 11px;
+  color: #8b7355;
+  letter-spacing: 4px;
+  margin-bottom: 8px;
+}
+.name-input {
+  width: 180px;
+  padding: 8px 14px;
+  background: rgba(26, 14, 5, 0.8);
+  border: 1.5px solid #c9a84c;
+  border-radius: 4px;
+  color: #f5e6c8;
+  font-size: 14px;
+  font-family: 'Georgia', 'Noto Serif SC', serif;
+  text-align: center;
+  letter-spacing: 2px;
+  outline: none;
+  transition: all 0.3s ease;
+  &::placeholder { color: #6b5a3a; }
+  &:focus {
+    border-color: #f5e6c8;
+    box-shadow: 0 0 12px rgba(201, 168, 76, 0.4);
+  }
+}
+
 /* 开始按钮 */
 .start-block {
   position: absolute;
-  top: 70%;
+  top: 76%;
   left: 50%;
   transform: translateX(-50%);
   animation: fadeSlideUp 1s ease-out 1.6s backwards;

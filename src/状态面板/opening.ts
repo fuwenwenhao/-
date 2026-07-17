@@ -63,6 +63,7 @@ export interface AttrPoints {
 }
 
 export interface CreationForm {
+  name: string;
   era: string;
   region: string;
   gender: string;
@@ -85,6 +86,7 @@ export interface CreationForm {
 // 组装开场白文本
 export function buildOpeningText(form: CreationForm): string {
   const vars: Record<string, string> = {
+    'user': form.name || '无名者',
     '时代': form.era,
     '地区': form.region,
     '性别': mapGender(form.gender),
@@ -106,9 +108,9 @@ export function buildOpeningText(form: CreationForm): string {
     '感知': String(form.attributes.perception),
   };
 
-  // 只替换我们定义的变量，{{user}} 交给酒馆宏
+  // 替换所有变量，包括名字
   return OPENING_TEMPLATE.replace(
-    /\{\{(时代|地区|性别|种族|年龄|身高|职业|身份|实力|阵营|外貌描述|性格描述|背景故事|力量|敏捷|智力|体质|魅力|感知)\}\}/g,
+    /\{\{(user|时代|地区|性别|种族|年龄|身高|职业|身份|实力|阵营|外貌描述|性格描述|背景故事|力量|敏捷|智力|体质|魅力|感知)\}\}/g,
     (_, key) => vars[key] ?? ''
   );
 }

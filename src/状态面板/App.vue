@@ -3,6 +3,7 @@
     <TitleScreen v-if="screen === 'title'" @start="handleStart" />
     <CreationScreen
       v-else-if="screen === 'creation'"
+      :player-name="playerName"
       @back="screen = 'title'"
       @done="onCreationDone"
     />
@@ -21,6 +22,7 @@ import MainGame from './components/MainGame.vue';
 type Screen = 'title' | 'creation' | 'main' | 'readonly' | 'hidden';
 const screen = ref<Screen>('hidden');
 const readonlyHtml = ref('');
+const playerName = ref('');
 
 onMounted(() => {
   const currentId = typeof getCurrentMessageId === 'function'
@@ -52,8 +54,8 @@ function hasCreated(): boolean {
     if (typeof getChatMessages === 'function') {
       const msgs = getChatMessages(0);
       const sd = msgs[0]?.data?.stat_data;
-      // 只有玩家完成创建后 stat_data.玩家.性别 才会被写入
-      if (sd?.玩家?.性别) return true;
+      // 只有玩家完成创建后 stat_data.玩家.名字 才会被写入
+      if (sd?.玩家?.名字) return true;
     }
   } catch {}
   return false;
@@ -82,7 +84,8 @@ function onCreationDone() {
   setTimeout(() => showFloorText(0), 300);
 }
 
-function handleStart() {
+function handleStart(name: string) {
+  playerName.value = name;
   const lastId = typeof getLastMessageId === 'function'
     ? getLastMessageId() : -1;
   if (lastId > 0) {

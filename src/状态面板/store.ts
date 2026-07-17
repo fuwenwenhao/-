@@ -53,6 +53,7 @@ export const useStatusStore = defineStore('status', () => {
       `地区: ${form.region}`,
       ``,
       `[玩家角色]`,
+      `名字: ${form.name}`,
       `性别: ${form.gender}`,
       `种族: ${form.race}`,
       `年龄: ${form.age}`,
@@ -158,6 +159,7 @@ export const useStatusStore = defineStore('status', () => {
     console.info('[月计] statData keys:', Object.keys(statData));
 
     // 2. 用玩家选择覆盖对应字段
+    deepSet(statData, '玩家.名字', form.name);
     deepSet(statData, '世界.时代', form.era);
     deepSet(statData, '世界.地区', form.region);
     deepSet(statData, '玩家.性别', form.gender);

@@ -354,6 +354,10 @@ const emit = defineEmits<{
   done: [];
 }>();
 
+const props = defineProps<{
+  playerName: string;
+}>();
+
 const store = useStatusStore();
 
 const totalSteps = 6;
@@ -412,6 +416,7 @@ function setCustomFaction() {
 }
 
 const form = reactive<CreationForm>({
+  name: '',
   era: '研究所时期',
   region: '',
   gender: '男',
@@ -560,6 +565,7 @@ async function handleSubmit() {
   submitting.value = true;
   // 把剩余点数写入 form，供 store 计算金钱
   form.remaining_points = remainingPoints.value;
+  form.name = props.playerName;
   try {
     await store.submitCreation(form);
     toastr.success('已进入月计都市', '创建完成');
