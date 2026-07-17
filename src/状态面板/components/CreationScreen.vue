@@ -351,7 +351,7 @@ import type { CreationForm } from '../opening';
 
 const emit = defineEmits<{
   back: [];
-  done: [];
+  done: [openingText: string];
 }>();
 
 const props = defineProps<{
@@ -567,9 +567,9 @@ async function handleSubmit() {
   form.remaining_points = remainingPoints.value;
   form.name = props.playerName;
   try {
-    await store.submitCreation(form);
+    const openingText = await store.submitCreation(form);
     toastr.success('已进入月计都市', '创建完成');
-    emit('done');
+    emit('done', openingText);
   } catch (e) {
     console.error('[月计都市] 创建失败:', e);
     showError('创建失败：' + (e instanceof Error ? e.message : String(e)));

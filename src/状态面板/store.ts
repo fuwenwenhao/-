@@ -145,7 +145,7 @@ export const useStatusStore = defineStore('status', () => {
   }
 
   // === 开局创建：提交表单 ===
-  async function submitCreation(form: CreationForm): Promise<void> {
+  async function submitCreation(form: CreationForm): Promise<string> {
     console.info('[月计] submitCreation 开始');
     // 1. 从第 0 楼读取 MVU 初始化的 stat_data
     let statData: Record<string, any> = {};
@@ -228,6 +228,8 @@ export const useStatusStore = defineStore('status', () => {
         should_stream: true,
       }).catch(e => console.warn('[月计] 自动生成失败:', e));
     }
+
+    return messageText;
   }
 
   function loadData() {

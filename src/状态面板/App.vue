@@ -79,9 +79,14 @@ function showFloorText(id: number) {
   screen.value = 'readonly';
 }
 
-function onCreationDone() {
-  // 创建完成后显示开场白
-  setTimeout(() => showFloorText(0), 300);
+function onCreationDone(openingText: string) {
+  // 直接用创建时生成的开场白文本显示
+  let text = openingText || '';
+  text = text.replace(/<maintext>([\s\S]*?)<\/maintext>/gi, '$1');
+  text = text.replace(/<option>[\s\S]*?<\/option>/gi, '');
+  text = text.replace(/\n/g, '<br>');
+  readonlyHtml.value = text.trim();
+  screen.value = 'readonly';
 }
 
 function handleStart(name: string) {
