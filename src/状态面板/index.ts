@@ -3,9 +3,14 @@ import { createPinia } from 'pinia';
 import App from './App.vue';
 
 async function boot() {
-  // 等待 MVU 全局初始化
+  // 等待 MVU 全局初始化（最多等 2 秒，超时照常启动）
   if (typeof waitGlobalInitialized === 'function') {
-    try { await waitGlobalInitialized('Mvu'); } catch {}
+    try {
+      await Promise.race([
+        waitGlobalInitialized('Mvu'),
+        new Promise(r => setTimeout(r, 2000)),
+      ]);
+    } catch {}
   }
 
   const app = createApp(App).use(createPinia());
