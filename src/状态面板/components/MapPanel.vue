@@ -233,4 +233,16 @@ function resetStep() {
   color: #4a3728; cursor: pointer; font-weight: bold;
   &:hover { background: linear-gradient(180deg, #c9a84c, #b8963f); color: #2c1810; }
 }
+
+// 小屏适配
+@media (max-width: 400px) {
+  .map-panel { padding: 2px; }
+  .current-loc { padding: 5px 8px; margin-bottom: 8px; }
+  .loc-value { font-size: 12px; }
+  .district-btn { padding: 3px 6px; font-size: 9px; }
+  .choice-btns { gap: 8px; }
+  .choice-btn { padding: 6px 12px; font-size: 11px; }
+  .custom-transport { flex-wrap: wrap; justify-content: center; gap: 4px; }
+  .custom-input { width: 80px; }
+}
 </style>

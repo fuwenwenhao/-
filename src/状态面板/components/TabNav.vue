@@ -69,13 +69,11 @@ const tabs = [
 .tab-icon { font-size: 14px; }
 .tab-label { font-size: 10px; white-space: nowrap; }
 
-// 手机小屏适配
-@media (max-width: 480px) {
+// 小屏适配：只显示 icon
+@media (max-width: 400px) {
   .tab-nav { gap: 2px; margin-bottom: 8px; }
-  .tab-bookmark {
-    min-width: 40px; padding: 4px 4px;
-  }
-  .tab-icon { font-size: 12px; }
-  .tab-label { font-size: 9px; }
+  .tab-bookmark { min-width: 36px; padding: 5px 4px; }
+  .tab-icon { font-size: 13px; }
+  .tab-label { display: none; }
 }
 </style>

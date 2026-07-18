@@ -163,4 +163,16 @@ function modCls(m: string) {
 
 .expand-enter-active, .expand-leave-active { transition: all 0.2s ease; }
 .expand-enter-from, .expand-leave-to { opacity: 0; }
+
+// 小屏适配
+@media (max-width: 400px) {
+  .npc-panel { padding: 2px; }
+  .npc-list { gap: 6px; }
+  .npc-card { padding: 6px 8px; }
+  .card-header { gap: 5px; margin-bottom: 3px; }
+  .npc-name { font-size: 12px; }
+  .card-summary { gap: 6px; font-size: 9px; flex-wrap: wrap; }
+  .card-detail { margin-top: 6px; padding-top: 6px; }
+  .bp-row { gap: 4px; font-size: 9px; }
+}
 </style>

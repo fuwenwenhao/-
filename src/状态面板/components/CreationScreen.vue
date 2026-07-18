@@ -588,18 +588,18 @@ async function handleSubmit() {
 .creation-frame {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  display: flex; flex-direction: column;
   background:
     radial-gradient(ellipse at 50% 20%, rgba(201, 168, 76, 0.08), transparent 70%),
     linear-gradient(170deg, #f5e6c8 0%, #e8d5a3 40%, #dfc992 100%);
-  border: 3px solid #c9a84c;
+  border: 2px solid #c9a84c;
   border-radius: 10px;
   box-shadow:
     0 0 15px rgba(201, 168, 76, 0.3),
     inset 0 0 25px rgba(139, 90, 43, 0.15);
-  padding: 18px;
+  padding: 14px;
   overflow: hidden;
-  animation: frameFadeIn 0.6s ease-out;
+  animation: frameFadeIn 0.5s ease-out;
   box-sizing: border-box;
 }
 @keyframes frameFadeIn {
@@ -651,9 +651,10 @@ async function handleSubmit() {
 }
 
 .content {
-  min-height: 240px;
+  flex: 1; min-height: 0;
   overflow-y: auto;
   padding-right: 4px;
+  margin-bottom: 10px;
 }
 .step { padding: 4px 2px; }
 .step-title {
@@ -828,9 +829,9 @@ async function handleSubmit() {
 }
 
 .footer-actions {
-  position: absolute;
-  bottom: 12px; left: 18px; right: 18px;
   display: flex; justify-content: space-between; gap: 10px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(201, 168, 76, 0.3);
 }
 
 .btn-secondary, .btn-primary {
@@ -872,4 +873,21 @@ async function handleSubmit() {
 }
 .slide-enter-from { opacity: 0; transform: translateX(20px); }
 .slide-leave-to { opacity: 0; transform: translateX(-20px); }
+
+// 小屏适配
+@media (max-width: 400px) {
+  .creation-frame { padding: 10px; }
+  .header { gap: 8px; margin-bottom: 8px; padding-bottom: 6px; }
+  .header-title { font-size: 14px; letter-spacing: 3px; }
+  .progress { gap: 8px; margin-bottom: 10px; }
+  .step-dot { width: 18px; height: 18px; font-size: 10px; }
+  .step-title { font-size: 12px; margin-bottom: 8px; }
+  .option-list { max-height: 140px; }
+  .option-list.compact { gap: 3px; }
+  .option-btn.small { padding: 3px 6px; font-size: 9px; }
+  .attr-row { padding: 5px 8px; }
+  .btn-step { width: 20px; height: 20px; font-size: 12px; }
+  .footer-actions { gap: 8px; }
+  .btn-secondary, .btn-primary { padding: 6px 10px; font-size: 11px; letter-spacing: 1px; }
+}
 </style>

@@ -97,4 +97,14 @@ function toggleItem(idx: number) {
 
 .desc-enter-active, .desc-leave-active { transition: all 0.15s ease; }
 .desc-enter-from, .desc-leave-to { opacity: 0; }
+
+// 小屏适配
+@media (max-width: 400px) {
+  .inventory-panel { padding: 2px; }
+  .inv-section { margin-bottom: 8px; }
+  .inv-title { font-size: 12px; margin-bottom: 6px; }
+  .inv-item { padding: 5px 6px; }
+  .item-name { font-size: 11px; }
+  .item-desc { font-size: 9px; }
+}
 </style>

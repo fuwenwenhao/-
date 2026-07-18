@@ -171,7 +171,7 @@ function modClass(m: string) {
 
 <style lang="scss" scoped>
 .player-panel { padding: 4px; }
-.section { margin-bottom: 14px; &:last-child { margin-bottom: 0; } }
+.section { margin-bottom: 12px; &:last-child { margin-bottom: 0; } }
 .section-title {
   font-size: 13px; color: #4a3728; margin: 0 0 8px 0;
   padding-bottom: 4px; border-bottom: 1px dashed rgba(201, 168, 76, 0.4);
@@ -184,30 +184,30 @@ function modClass(m: string) {
 .name-value { font-size: 14px; color: #c9a84c; }
 .form-value { color: #8b5a2b; font-style: italic; }
 
-.bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
-.bar-label { font-size: 11px; width: 62px; flex-shrink: 0; color: #4a3728; }
+.bar-row { display: flex; align-items: center; gap: 6px; margin-bottom: 5px; }
+.bar-label { font-size: 11px; width: 56px; flex-shrink: 0; color: #4a3728; }
 .bar-track {
-  flex: 1; height: 14px; background: rgba(74, 55, 40, 0.12);
-  border-radius: 7px; border: 1px solid rgba(201, 168, 76, 0.35); overflow: hidden;
+  flex: 1; height: 12px; background: rgba(74, 55, 40, 0.12);
+  border-radius: 6px; border: 1px solid rgba(201, 168, 76, 0.35); overflow: hidden;
 }
 .bar-fill {
-  height: 100%; border-radius: 6px; transition: width 0.5s ease;
+  height: 100%; border-radius: 5px; transition: width 0.4s ease;
   &.hp { background: linear-gradient(90deg, #8b3a3a, #c94040); }
   &.sanity { background: linear-gradient(90deg, #6b4a8b, #9b6dc9); }
 }
-.bar-num { font-size: 10px; color: #6b5440; width: 50px; text-align: right; }
+.bar-num { font-size: 10px; color: #6b5440; width: 46px; text-align: right; }
 
-.text-row { display: flex; gap: 8px; margin-bottom: 4px; }
-.text-label { font-size: 11px; color: #6b5440; width: 62px; }
-.text-value { font-size: 12px; color: #4a3728; font-weight: bold; }
+.text-row { display: flex; gap: 6px; margin-bottom: 4px; }
+.text-label { font-size: 11px; color: #6b5440; width: 56px; flex-shrink: 0; }
+.text-value { font-size: 12px; color: #4a3728; font-weight: bold; word-break: break-all; }
 .money-value { color: #c9a84c; }
 
-.equip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
-.equip-item { display: flex; gap: 6px; align-items: center; }
-.equip-label { font-size: 11px; color: #6b5440; width: 36px; }
-.equip-value { font-size: 12px; color: #4a3728; }
+.equip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+.equip-item { display: flex; gap: 4px; align-items: center; }
+.equip-label { font-size: 11px; color: #6b5440; width: 32px; flex-shrink: 0; }
+.equip-value { font-size: 11px; color: #4a3728; word-break: break-all; }
 
-.body-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.body-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
 .body-item {
   padding: 5px 6px; background: rgba(74, 55, 40, 0.05);
   border-radius: 4px; border-left: 3px solid rgba(201, 168, 76, 0.4);
@@ -230,26 +230,29 @@ function modClass(m: string) {
 .body-detail { display: flex; gap: 6px; font-size: 9px; color: #6b5440; flex-wrap: wrap; }
 .body-effect { font-size: 9px; color: #5a7a4a; font-style: italic; margin-top: 2px; }
 
-.attr-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.attr-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
 .attr-item { display: flex; gap: 4px; align-items: center; }
 .attr-label { font-size: 11px; color: #6b5440; }
 .attr-value { font-size: 13px; color: #c9a84c; font-weight: bold; }
 
-// 手机小屏适配
-@media (max-width: 480px) {
+// 小屏适配
+@media (max-width: 400px) {
   .player-panel { padding: 2px; }
-  .section { margin-bottom: 10px; }
+  .section { margin-bottom: 8px; }
   .section-title { font-size: 12px; margin-bottom: 6px; }
-  .info-grid { gap: 6px; margin-bottom: 8px; }
+  .info-grid { gap: 5px; margin-bottom: 8px; }
   .bar-row { gap: 4px; margin-bottom: 4px; }
-  .bar-label { width: 52px; font-size: 10px; }
-  .bar-num { font-size: 9px; width: 44px; }
+  .bar-label { width: 48px; font-size: 10px; }
+  .bar-track { height: 10px; }
+  .bar-num { font-size: 9px; width: 40px; }
   .text-row { gap: 4px; margin-bottom: 3px; }
-  .text-label { width: 52px; font-size: 10px; }
+  .text-label { width: 48px; font-size: 10px; }
   .text-value { font-size: 11px; }
-  .equip-grid { gap: 4px; }
+  .equip-grid { gap: 3px; }
+  .equip-label { width: 28px; font-size: 10px; }
+  .equip-value { font-size: 10px; }
   .body-grid { gap: 4px; }
   .body-item { padding: 4px 5px; }
-  .attr-grid { gap: 4px; }
+  .attr-grid { grid-template-columns: repeat(2, 1fr); gap: 4px; }
 }
 </style>

@@ -74,4 +74,13 @@ function handleLoad(id: number) {
   color: #6b5440;
 }
 .floor-role { font-size: 12px; }
+
+// 小屏适配
+@media (max-width: 400px) {
+  .history-panel { padding: 2px; }
+  .section-title { font-size: 12px; }
+  .floor-list { max-height: 200px; }
+  .floor-item { padding: 5px 6px; font-size: 10px; gap: 4px; }
+  .floor-id { min-width: 24px; }
+}
 </style>

@@ -147,13 +147,15 @@ onMounted(() => {
 .fade-enter-active, .fade-leave-active { transition: opacity 0.2s; }
 .fade-enter-from, .fade-leave-to { opacity: 0; }
 
-// 手机小屏适配
-@media (max-width: 480px) {
+// 小屏适配
+@media (max-width: 400px) {
   .panel-root { padding: 2px; }
   .maintext-box { padding: 8px 10px; margin-bottom: 6px; }
   .maintext-body { font-size: 13px; line-height: 1.7; }
   .floor-nav { gap: 8px; margin-bottom: 6px; padding-bottom: 4px; }
-  .divider { margin: 2px 0 6px; }
+  .nav-btn { padding: 2px 8px; font-size: 11px; }
+  .divider { margin: 2px 0 6px; font-size: 9px; }
   .status-compact { padding: 6px; }
+  .tab-body { min-height: 60px; }
 }
 </style>

@@ -115,4 +115,11 @@ function handleStart(name: string) {
   color: #f0e6d2;
   font-family: 'Georgia', 'Noto Serif SC', serif;
 }
+
+@media (max-width: 400px) {
+  .readonly-text {
+    padding: 8px 10px;
+    font-size: 13px; line-height: 1.7;
+  }
+}
 </style>
