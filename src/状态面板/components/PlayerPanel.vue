@@ -79,7 +79,7 @@
     <!-- 身体部位 -->
     <section class="section">
       <h3 class="section-title">◈ 身体状况</h3>
-      <div class="body-list">
+      <div class="body-grid">
         <div class="body-item" v-for="bp in bodyList" :key="bp.key">
           <div class="body-header">
             <span class="body-name">{{ bp.label }}</span>
@@ -207,31 +207,49 @@ function modClass(m: string) {
 .equip-label { font-size: 11px; color: #6b5440; width: 36px; }
 .equip-value { font-size: 12px; color: #4a3728; }
 
-.body-list { display: flex; flex-direction: column; gap: 8px; }
+.body-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
 .body-item {
-  padding: 6px 8px; background: rgba(74, 55, 40, 0.05);
+  padding: 5px 6px; background: rgba(74, 55, 40, 0.05);
   border-radius: 4px; border-left: 3px solid rgba(201, 168, 76, 0.4);
 }
-.body-header { display: flex; align-items: center; gap: 8px; margin-bottom: 2px; }
-.body-name { font-size: 12px; color: #4a3728; font-weight: bold; width: 32px; }
+.body-header { display: flex; align-items: center; gap: 4px; margin-bottom: 2px; flex-wrap: wrap; }
+.body-name { font-size: 11px; color: #4a3728; font-weight: bold; }
 .body-mod {
-  font-size: 10px; padding: 1px 6px; border-radius: 8px; font-weight: bold;
+  font-size: 9px; padding: 1px 4px; border-radius: 8px; font-weight: bold;
   &.mod-organic { background: #d4e8c8; color: #3a6b2a; }
   &.mod-cyber { background: #c8d8e8; color: #2a4a6b; }
   &.mod-bio { background: #e8c8d8; color: #6b2a4a; }
 }
 .body-status {
-  font-size: 11px; font-weight: bold;
+  font-size: 10px; font-weight: bold;
   &.status-normal { color: #4a8b4a; }
   &.status-light { color: #b89b3f; }
   &.status-heavy { color: #c94040; }
   &.status-critical { color: #6b1a1a; }
 }
-.body-detail { display: flex; gap: 10px; font-size: 10px; color: #6b5440; }
-.body-effect { font-size: 10px; color: #5a7a4a; font-style: italic; margin-top: 2px; }
+.body-detail { display: flex; gap: 6px; font-size: 9px; color: #6b5440; flex-wrap: wrap; }
+.body-effect { font-size: 9px; color: #5a7a4a; font-style: italic; margin-top: 2px; }
 
 .attr-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
 .attr-item { display: flex; gap: 4px; align-items: center; }
 .attr-label { font-size: 11px; color: #6b5440; }
 .attr-value { font-size: 13px; color: #c9a84c; font-weight: bold; }
+
+// 手机小屏适配
+@media (max-width: 480px) {
+  .player-panel { padding: 2px; }
+  .section { margin-bottom: 10px; }
+  .section-title { font-size: 12px; margin-bottom: 6px; }
+  .info-grid { gap: 6px; margin-bottom: 8px; }
+  .bar-row { gap: 4px; margin-bottom: 4px; }
+  .bar-label { width: 52px; font-size: 10px; }
+  .bar-num { font-size: 9px; width: 44px; }
+  .text-row { gap: 4px; margin-bottom: 3px; }
+  .text-label { width: 52px; font-size: 10px; }
+  .text-value { font-size: 11px; }
+  .equip-grid { gap: 4px; }
+  .body-grid { gap: 4px; }
+  .body-item { padding: 4px 5px; }
+  .attr-grid { gap: 4px; }
+}
 </style>

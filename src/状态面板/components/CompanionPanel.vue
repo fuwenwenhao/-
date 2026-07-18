@@ -168,4 +168,14 @@ function modCls(m: string) {
 
 .expand-enter-active, .expand-leave-active { transition: all 0.2s ease; }
 .expand-enter-from, .expand-leave-to { opacity: 0; }
+
+// 手机小屏适配
+@media (max-width: 480px) {
+  .companion-panel { padding: 2px; }
+  .companion-card { padding: 6px 8px; }
+  .card-header { gap: 6px; margin-bottom: 3px; }
+  .comp-name { font-size: 12px; }
+  .card-summary { gap: 6px; font-size: 9px; }
+  .bp-row { gap: 4px; font-size: 9px; }
+}
 </style>
